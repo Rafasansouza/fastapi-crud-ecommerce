@@ -46,7 +46,7 @@ def delete_one_product(product_id: int, db: Session = Depends(get_db)):
     db_product = delete_product(product_id=product_id, db=db)
     if db_product is None:
         raise HTTPException(status_code=404, detail="Voce esta deletando um produto que nao existe!")
-    return delete_product(product_id=product_id, db=db)
+    return db_product
 
 # criar minha rota de fazer update nos itens
 @router.put("/products/{product_id}", response_model=ProductResponse)
